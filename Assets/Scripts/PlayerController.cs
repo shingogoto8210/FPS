@@ -12,8 +12,6 @@ namespace FPS
 
     [RequireComponent(typeof(CharacterController), typeof(AudioSource))]
 
-
-
     public class PlayerController : MonoBehaviour
     {
         [Range(0.1f, 2f)]
@@ -23,9 +21,13 @@ namespace FPS
 
         private CharacterController charaController;
 
+        private GameObject FPSCamera;
+        private Vector3 moveDir = Vector3.zero;
+
         // Start is called before the first frame update
         void Start()
         {
+            FPSCamera = GameObject.Find("FPSCamera");
             charaController = GetComponent<CharacterController>();
         }
 
@@ -43,16 +45,27 @@ namespace FPS
 
             if(movement.sqrMagnitude > 1)
             {
+                //向きはそのまま長さが１になる
                 movement.Normalize();
             }
 
+            
+            Vector3 desiredMove = FPSCamera.transform.forward * movement.z + FPSCamera.transform.right * movement.x;
+            moveDir.x = desiredMove.x * 5f;
+            moveDir.z = desiredMove.z * 5f;
+
+            //Debug.Log("movement" + movement);
+            //Debug.Log("movement.sqrMagnitude" + movement.sqrMagnitude);
+            Debug.Log("desiredMove" + desiredMove);
+            //Debug.Log("moveDir" + moveDir);
+
             if(Input.GetKey(KeyCode.LeftShift))
             {
-                charaController.Move(movement * Time.fixedDeltaTime * runSpeed);
+                charaController.Move(moveDir * Time.fixedDeltaTime * runSpeed);
             }
             else
             {
-                charaController.Move(movement * Time.fixedDeltaTime * walkSpeed);
+                charaController.Move(moveDir * Time.fixedDeltaTime * walkSpeed);
 
             }
         }
