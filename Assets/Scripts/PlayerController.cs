@@ -34,6 +34,15 @@ namespace FPS
         [Range(0.1f, 5f)]
         public float normalHeight = 2f;
 
+        [HideInInspector]
+        public PlayerState currentPlayerState;
+        [HideInInspector]
+        public bool isWalking = false;
+        [HideInInspector]
+        public bool isRunning = false;
+        [HideInInspector]
+        public bool isCrouching = false;
+
         // Start is called before the first frame update
         void Start()
         {
@@ -46,6 +55,9 @@ namespace FPS
         {
             Move();
             Crouch();
+
+            PlayerStateManager();
+            print(currentPlayerState);
         }
 
         private void Move()
@@ -73,10 +85,14 @@ namespace FPS
             if(Input.GetKey(KeyCode.LeftShift))
             {
                 charaController.Move(moveDir * Time.fixedDeltaTime * runSpeed);
+                isWalking = false;
+                isRunning = true;
             }
             else
             {
                 charaController.Move(moveDir * Time.fixedDeltaTime * walkSpeed);
+                isWalking = true;
+                isRunning = false;
 
             }
 
@@ -96,10 +112,35 @@ namespace FPS
             if(Input.GetKey(KeyCode.LeftControl))
             {
                 charaController.height = crouchHeight;
+                isCrouching = true;
             }
             else
             {
                 charaController.height = normalHeight;
+                isCrouching = false;
+            }
+        }
+
+        void PlayerStateManager()
+        {
+            if(charaController.isGrounded)
+            {
+                if(charaController.velocity.sqrMagnitude < 0.01f)
+                {
+                    currentPlayerState = PlayerState.Idle;
+                }
+                else if(isWalking == true && isRunning == false)
+                {
+                    currentPlayerState = PlayerState.Walking;
+                }
+                else if(charaController.velocity.sqrMagnitude > 0.01f && isWalking == false && isRunning == true)
+                {
+                    currentPlayerState = PlayerState.Running;
+                }
+                else
+                {
+                    currentPlayerState = PlayerState.Jumping;
+                }
             }
         }
     }
