@@ -24,6 +24,11 @@ namespace FPS
         private GameObject FPSCamera;
         private Vector3 moveDir = Vector3.zero;
 
+        [Range(0.1f, 10f)]
+        public float gravity = 9.8f;
+        [Range(1f, 15f)]
+        public float jumpPower = 10f;
+
         // Start is called before the first frame update
         void Start()
         {
@@ -67,6 +72,16 @@ namespace FPS
             {
                 charaController.Move(moveDir * Time.fixedDeltaTime * walkSpeed);
 
+            }
+
+            moveDir.y -= gravity * Time.deltaTime;//重力の発生
+
+            if(charaController.isGrounded)
+            {
+                if(Input.GetKeyDown(KeyCode.Space))
+                {
+                    moveDir.y = jumpPower;//ジャンプ
+                }
             }
         }
     }
