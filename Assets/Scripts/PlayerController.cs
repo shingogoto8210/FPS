@@ -29,6 +29,11 @@ namespace FPS
         [Range(1f, 15f)]
         public float jumpPower = 10f;
 
+        [Range(0.1f, 2f)]
+        public float crouchHeight = 1f;
+        [Range(0.1f, 5f)]
+        public float normalHeight = 2f;
+
         // Start is called before the first frame update
         void Start()
         {
@@ -40,6 +45,7 @@ namespace FPS
         void Update()
         {
             Move();
+            Crouch();
         }
 
         private void Move()
@@ -82,6 +88,18 @@ namespace FPS
                 {
                     moveDir.y = jumpPower;//ジャンプ
                 }
+            }
+        }
+
+        void Crouch()
+        {
+            if(Input.GetKey(KeyCode.LeftControl))
+            {
+                charaController.height = crouchHeight;
+            }
+            else
+            {
+                charaController.height = normalHeight;
             }
         }
     }
