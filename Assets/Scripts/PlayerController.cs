@@ -43,11 +43,18 @@ namespace FPS
         [HideInInspector]
         public bool isCrouching = false;
 
-        // Start is called before the first frame update
+        public AudioClip walkSound;
+        public AudioClip runSound;
+        private AudioSource footStepSource;
+        [HideInInspector]
+        public float footSoundDelay;
+
         void Start()
         {
             FPSCamera = GameObject.Find("FPSCamera");
             charaController = GetComponent<CharacterController>();
+            footStepSource = GetComponent<AudioSource>();
+            StartCoroutine(PlayerFootSound());//コルーチンの起動
         }
 
         // Update is called once per frame
@@ -55,9 +62,9 @@ namespace FPS
         {
             Move();
             Crouch();
-
             PlayerStateManager();
             print(currentPlayerState);
+            Debug.Log(charaController.velocity.sqrMagnitude);
         }
 
         private void Move()
@@ -79,8 +86,8 @@ namespace FPS
 
             //Debug.Log("movement" + movement);
             //Debug.Log("movement.sqrMagnitude" + movement.sqrMagnitude);
-            Debug.Log("desiredMove" + desiredMove);
-            //Debug.Log("moveDir" + moveDir);
+            //Debug.Log("desiredMove" + desiredMove);
+            Debug.Log("moveDir" + moveDir);
 
             if(Input.GetKey(KeyCode.LeftShift))
             {
@@ -123,24 +130,49 @@ namespace FPS
 
         void PlayerStateManager()
         {
-            if(charaController.isGrounded)
+            if (charaController.isGrounded)
             {
-                if(charaController.velocity.sqrMagnitude < 0.01f)
+                if (charaController.velocity.sqrMagnitude < 0.01f)
                 {
                     currentPlayerState = PlayerState.Idle;
                 }
-                else if(isWalking == true && isRunning == false)
+                else if (isWalking == true && isRunning == false)
                 {
                     currentPlayerState = PlayerState.Walking;
                 }
-                else if(charaController.velocity.sqrMagnitude > 0.01f && isWalking == false && isRunning == true)
+                else if (charaController.velocity.sqrMagnitude > 0.01f && isWalking == false && isRunning == true)
                 {
                     currentPlayerState = PlayerState.Running;
                 }
-                else
+            }
+            else
+            {
+                currentPlayerState = PlayerState.Jumping;
+            }
+        }
+
+        //移動時の足音
+        public IEnumerator PlayerFootSound()
+        {
+            while (true)
+            {
+                if (currentPlayerState != PlayerState.Idle)
                 {
-                    currentPlayerState = PlayerState.Jumping;
+                    if (currentPlayerState == PlayerState.Walking)
+                    {
+                        footStepSource.PlayOneShot(walkSound, 0.9f);
+                        footStepSource.pitch = Random.Range(1f, 1.2f);
+                        footSoundDelay = 1 / walkSpeed;
+                    }
+                    if (currentPlayerState == PlayerState.Running)
+                    {
+                        footStepSource.PlayOneShot(runSound, 0.9f);
+                        footStepSource.pitch = Random.Range(1f, 1.2f);
+                        footSoundDelay = 1 / runSpeed;
+                    }
                 }
+                yield return new WaitForSeconds(footSoundDelay * 2);
+                footStepSource.Stop();
             }
         }
     }

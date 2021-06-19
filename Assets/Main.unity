@@ -346,6 +346,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkSpeed: 1.5
   runSpeed: 3.5
+  gravity: 9.8
+  jumpPower: 10
+  crouchHeight: 1
+  normalHeight: 2
+  currentPlayerState: 0
+  isWalking: 0
+  isRunning: 0
+  isCrouching: 0
+  walkSound: {fileID: 8300000, guid: eb27edcfdbc7ef84a9c9a3c41961a6e1, type: 3}
+  runSound: {fileID: 8300000, guid: 15f18dcd9614f8d4da4b8c64601dfdc2, type: 3}
+  footSoundDelay: 0
 --- !u!82 &1399127663
 AudioSource:
   m_ObjectHideFlags: 0
