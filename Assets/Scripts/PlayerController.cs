@@ -84,7 +84,6 @@ namespace FPS
             moveDir.x = desiredMove.x * 5f;
             moveDir.z = desiredMove.z * 5f;
             //Debug.Log(FPSCamera.transform.forward);
-
             //Debug.Log("movement" + movement);
             //Debug.Log("movement.sqrMagnitude" + movement.sqrMagnitude);
             //Debug.Log("desiredMove" + desiredMove);

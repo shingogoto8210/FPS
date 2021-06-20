@@ -30,6 +30,7 @@ namespace FPS{
             currentYRot = Mathf.SmoothDamp(currentYRot, yRot, ref yRotVelocity, lookSmooth);
 
             transform.rotation = Quaternion.Euler(currentXRot, currentYRot, 0);
+            //Debug.Log(xRotVelocity);
         }
     }
 }

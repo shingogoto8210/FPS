@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 288634066}
   - component: {fileID: 288634065}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -847,7 +847,7 @@ GameObject:
   - component: {fileID: 1863035744}
   m_Layer: 0
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -922,7 +922,7 @@ Transform:
   m_GameObject: {fileID: 1863035743}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 1, z: 2}
+  m_LocalScale: {x: 6, y: 1, z: 8}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
@@ -951,13 +951,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2129563629}
-  m_LocalRotation: {x: -0.38214228, y: -0, z: -0, w: 0.9241035}
-  m_LocalPosition: {x: 0, y: -0.8399999, z: 1}
+  m_LocalRotation: {x: -0.16942854, y: -0, z: -0, w: 0.9855425}
+  m_LocalPosition: {x: 0, y: -0.96, z: 1.62}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 963194228}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: -44.933002, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -19.509, y: 0, z: 0}
 --- !u!114 &2129563631
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -970,11 +970,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 532c4220fab980649a6ca0c2339a5d5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grenadePrefab: {fileID: 6368490192043884734, guid: b214075432da35541bf95a3b141f3ef4,
+  grenadePrefab: {fileID: 5568109599880246755, guid: b214075432da35541bf95a3b141f3ef4,
     type: 3}
-  throwSound: {fileID: 0}
-  throwSpeed: 0
-  grenadeCount: 0
+  throwSound: {fileID: 8300000, guid: ab163211293b1574a97bb606eb42b882, type: 3}
+  throwSpeed: 400
+  grenadeCount: 30
 --- !u!1 &1000008627342959
 GameObject:
   m_ObjectHideFlags: 0
@@ -992,7 +992,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1000010883746511
 GameObject:
   m_ObjectHideFlags: 0
