@@ -83,11 +83,12 @@ namespace FPS
             Vector3 desiredMove = FPSCamera.transform.forward * movement.z + FPSCamera.transform.right * movement.x;
             moveDir.x = desiredMove.x * 5f;
             moveDir.z = desiredMove.z * 5f;
+            //Debug.Log(FPSCamera.transform.forward);
 
             //Debug.Log("movement" + movement);
             //Debug.Log("movement.sqrMagnitude" + movement.sqrMagnitude);
             //Debug.Log("desiredMove" + desiredMove);
-            Debug.Log("moveDir" + moveDir);
+            //Debug.Log("moveDir" + moveDir);
 
             if(Input.GetKey(KeyCode.LeftShift))
             {

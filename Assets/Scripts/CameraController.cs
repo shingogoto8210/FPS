@@ -18,12 +18,6 @@ namespace FPS{
         private float yRotVelocity;
         private float xRotVelocity;
 
-        // Start is called before the first frame update
-        void Start()
-        {
-
-        }
-
         // Update is called once per frame
         void Update()
         {

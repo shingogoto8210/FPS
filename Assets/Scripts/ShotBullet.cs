@@ -22,7 +22,7 @@ public class ShotBullet : MonoBehaviour
             {
                 shotCount -= 1;
 
-                GameObject bullet = (GameObject)Instantiate(bulletPrefab, transform.position, Quaternion.Euler(transform.parent.eulerAngles.x, transform.parent.eulerAngles.y, 0));
+                GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.Euler(transform.parent.eulerAngles.x+90, transform.parent.eulerAngles.y, 0)) ;
                 Rigidbody bulletRb = bullet.GetComponent<Rigidbody>();
                 bulletRb.AddForce(transform.forward * shotSpeed);
                 Destroy(bullet, 3.0f);
