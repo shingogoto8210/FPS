@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 288634065}
   m_Layer: 0
   m_Name: Wall
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -672,6 +672,7 @@ GameObject:
   - component: {fileID: 1399127664}
   - component: {fileID: 1399127663}
   - component: {fileID: 1399127662}
+  - component: {fileID: 1399127666}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -833,6 +834,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1399127666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1399127661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b88dfdd028a15b64b83126e1ff1d9bc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapons:
+  - {fileID: 1000008627342959}
+  - {fileID: 2129563629}
+  changeSound: {fileID: 8300000, guid: ab163211293b1574a97bb606eb42b882, type: 3}
+  currentNum: 0
 --- !u!1 &1863035743
 GameObject:
   m_ObjectHideFlags: 0
@@ -992,7 +1010,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1000010883746511
 GameObject:
   m_ObjectHideFlags: 0

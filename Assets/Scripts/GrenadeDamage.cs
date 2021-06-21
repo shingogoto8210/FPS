@@ -4,11 +4,27 @@ using UnityEngine;
 
 public class GrenadeDamage : MonoBehaviour
 {
-    private void OnParticleCollision(GameObject other)
+    private float radius = 20.0f;
+    private float power = 100.0f;
+
+    void OnParticleCollision(GameObject other)
     {
-        if(other.gameObject.tag == "Enemy")
+        Vector3 explosionPos = transform.position;
+
+        Collider[] colliders = Physics.OverlapSphere(explosionPos, radius);
+
+        foreach(Collider hit in colliders)
         {
-            Destroy(other.gameObject);
+            Rigidbody rb = hit.GetComponent<Rigidbody>();
+
+            if(rb != null)
+            {
+                rb.AddExplosionForce(power, explosionPos, 15.0f);
+            }
+            if(hit.gameObject.tag == "Enemy")
+            {
+                Destroy(hit.gameObject, 1.5f);
+            }
         }
     }
 }
