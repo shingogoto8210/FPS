@@ -8,6 +8,7 @@ public class DamageScreen : MonoBehaviour
     public Image damageScreenImage;
     private Color color;
     public int playerHP;
+    private int playerMaxHP = 10;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +27,21 @@ public class DamageScreen : MonoBehaviour
             damageScreenImage.color = color;
         }
 
+    }
+
+    public void AddHP(int amount)
+    {
+        playerHP += amount;
+        color.a -= 0.1f * amount;
+        if (playerHP > playerMaxHP)
+        {
+            playerHP = playerMaxHP;
+        }
+        if(color.a < 0)
+        {
+            color.a = 0; 
+        }
+        damageScreenImage.color = color;
     }
 
 }

@@ -7,13 +7,7 @@ public class EnemyTurret : MonoBehaviour
     public GameObject enemyShellPrefab;
     private int interval;
     public int shotPower;
-    // Start is called before the first frame update
-    void Start()
-    {
 
-    }
-
-    // Update is called once per frame
     void Update()
     {
         interval += 1;
