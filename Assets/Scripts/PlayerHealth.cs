@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DamageScreen : MonoBehaviour
+public class PlayerHealth : MonoBehaviour
 {
     public Image damageScreenImage;
     private Color color;
     public int playerHP;
     private int playerMaxHP = 10;
+    private CameraShake shake;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +17,7 @@ public class DamageScreen : MonoBehaviour
         color = damageScreenImage.color;
         color.a = 0.0f;
         damageScreenImage.color = color;
+        shake = GameObject.Find("FPSCamera").GetComponent<CameraShake>();
     }
     private void OnCollisionEnter(Collision other)
     {
@@ -25,6 +27,7 @@ public class DamageScreen : MonoBehaviour
             Destroy(other.gameObject);
             color.a += 0.1f;
             damageScreenImage.color = color;
+            shake.Shake(0.2f, 0.1f);
         }
 
     }

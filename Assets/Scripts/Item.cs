@@ -5,13 +5,13 @@ using UnityEngine;
 public class Item : MonoBehaviour
 {
     [SerializeField] private GameObject player;
-    private DamageScreen damageScreen;
+    private PlayerHealth playerHealth;
     public int reward;
 
     // Start is called before the first frame update
     void Start()
     {
-        damageScreen = player.GetComponent<DamageScreen>();
+        playerHealth = player.GetComponent<PlayerHealth>();
     }
 
 
@@ -19,7 +19,7 @@ public class Item : MonoBehaviour
     {
         if(other.gameObject.tag == "Player")
         {
-            damageScreen.AddHP(reward);
+            playerHealth.AddHP(reward);
             Destroy(gameObject);
         }
     }
