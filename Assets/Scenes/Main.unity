@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 288634066}
   - component: {fileID: 288634065}
   - component: {fileID: 288634069}
+  - component: {fileID: 288634070}
   m_Layer: 0
   m_Name: Wall
   m_TagString: Enemy
@@ -231,6 +232,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &288634070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 288634064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13d6d08c8104a004684cf53d2884a2b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effectPrefab: {fileID: 100002, guid: 9565cde8c7698420aa10544579cb6f3d, type: 3}
 --- !u!1 &376006249
 GameObject:
   m_ObjectHideFlags: 0
@@ -698,6 +712,7 @@ GameObject:
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
   - component: {fileID: 963194229}
+  - component: {fileID: 963194230}
   m_Layer: 0
   m_Name: FPSCamera
   m_TagString: MainCamera
@@ -787,6 +802,18 @@ MonoBehaviour:
   lookSensitivity: 5
   lookSmooth: 0.1
   MinMaxAngle: {x: -65, y: 65}
+--- !u!114 &963194230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57b6082f664f1d041a8d2f761d076e11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1209066672
 GameObject:
   m_ObjectHideFlags: 0
@@ -1690,12 +1717,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc8b073adedbced428abb15c6345fdb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 1647805606558618829, guid: ac8fef5351522ab4584e806f0573ab5f,
+  bulletPrefab: {fileID: 6349129530235883095, guid: ac8fef5351522ab4584e806f0573ab5f,
     type: 3}
   shotSound: {fileID: 8300000, guid: 1ba6bf4b16e2940488f5179629dd6321, type: 3}
   reloadSound: {fileID: 8300000, guid: 7932a2e161ec58249a697ae93df1d7ef, type: 3}
   shotSpeed: 150
   shotCount: 30
+  effectPrefab: {fileID: 100000, guid: d42d2a594cf3a44d79c3fdd83c8ce796, type: 3}
 --- !u!4 &3069181884645637672
 Transform:
   m_ObjectHideFlags: 0
@@ -1725,6 +1753,7 @@ GameObject:
   - component: {fileID: 3122827810914350852}
   - component: {fileID: 3122827810914350855}
   - component: {fileID: 3122827810914350854}
+  - component: {fileID: 3122827810914350856}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -1742,7 +1771,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 1.5
-  m_Speed: 3.5
+  m_Speed: 1
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -1796,6 +1825,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &3122827810914350856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3122827810914350851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13d6d08c8104a004684cf53d2884a2b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effectPrefab: {fileID: 100000, guid: 769fbd11a7ef2445682e024c98c276b5, type: 3}
 --- !u!23 &3704867469338379231
 MeshRenderer:
   m_ObjectHideFlags: 0

@@ -10,6 +10,7 @@ public class ShotBullet : MonoBehaviour
     public float shotSpeed;
     public int shotCount = 30;
     private float shotInterval;
+    public GameObject effectPrefab;
 
     // Update is called once per frame
     void Update()
@@ -27,6 +28,8 @@ public class ShotBullet : MonoBehaviour
                 bulletRb.AddForce(transform.forward * shotSpeed);
                 Destroy(bullet, 3.0f);
                 AudioSource.PlayClipAtPoint(shotSound, Camera.main.transform.position);
+                GameObject effect = Instantiate(effectPrefab, transform.position, Quaternion.identity);
+                Destroy(effect, 0.5f);
             }
         }
         else if(Input.GetKeyDown(KeyCode.R))
