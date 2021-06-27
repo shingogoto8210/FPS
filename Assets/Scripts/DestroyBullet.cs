@@ -5,17 +5,7 @@ using UnityEngine;
 public class DestroyBullet : MonoBehaviour
 {
     public GameObject effectPrefab;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     private void OnCollisionEnter(Collision other)
     {
@@ -25,7 +15,7 @@ public class DestroyBullet : MonoBehaviour
 
             foreach(ContactPoint contactPoint in other.contacts)
             {
-                GameObject effect = Instantiate(effectPrefab, transform.position,Quaternion.identity);
+                GameObject effect = Instantiate(effectPrefab, contactPoint.point,Quaternion.identity);
                 Destroy(effect, 2.0f);
             }
         }
