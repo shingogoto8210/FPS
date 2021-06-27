@@ -6,21 +6,12 @@ public class Rader : MonoBehaviour
 {
     [SerializeField] Transform target;
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     private void OnTriggerStay(Collider other)
     {
-        if(other.gameObject.tag == "player")
+        if(other.gameObject.tag == "Player")
         {
-            transform.root.LookAt(target);
+            transform.parent.LookAt(target);
         }
     }
 }
